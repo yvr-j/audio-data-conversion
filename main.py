@@ -1,14 +1,20 @@
+import streamlit as st
+from page import pagelink as link
 from langchain_community.document_loaders import YoutubeLoader
 from langchain.schema import Document
 import nltk
 from langchain.text_splitter import NLTKTextSplitter
-nltk.download('punkt')
+
+link()
+variable=st.session_state.youtube_video_link
 # from langchain_community.document_transformers import DoctranTextTranslator
 # from dotenv import load_dotenv
 # from langchain_community.text_splitter import RecursingCharacterTextSplitter
 # lets try this code for first time hehehehe
 # load_dotenv("api.env")
-text = YoutubeLoader.from_youtube_url("https://youtu.be/VXfJwZORMCc")
+
+nltk.download('punkt')
+text = YoutubeLoader.from_youtube_url(variable)
 data = text.load()
 print(data[0])
 
